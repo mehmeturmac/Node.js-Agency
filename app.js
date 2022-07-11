@@ -9,7 +9,7 @@ const pageControllers = require('./controllers/pageControllers');
 const app = express();
 
 //CONNECT DB
-mongoose.connect('mongodb://localhost/agency-db');
+mongoose.connect('mongodb+srv://mehmeturmac:sFtHCKUTgv7SMfJz@cluster0.p2ezgyi.mongodb.net/agency-db?retryWrites=true&w=majority');
 
 //TEMPLATE ENGINE
 app.set('view engine', 'ejs');
@@ -36,7 +36,7 @@ app.get('/contact', pageControllers.getContactPage);
 app.get('/add', pageControllers.getAddPage);
 app.get('/photos/edit/:id', pageControllers.getEditPage);
 
-const port = 3000;
-app.listen(process.env.PORT || port, () => {
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
   console.log(`Server started on port: ${port}`);
 });
